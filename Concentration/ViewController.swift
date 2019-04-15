@@ -9,21 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
     
     @IBOutlet var cardButtons: [UIButton]!
-    var emojiChoices = ["👻", "🤮", "🤗", "👀", "👅", "🍀"]
     var flipCount: Int = 0 {
         didSet{
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     };
-    //@IBAction - говорит икскоду что это экшен
-    //func - говорит о том что это функция (в данном случае метод)
-    //touchCard - название метода
-    //
+    
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
+            flipCount += 1
             game.choseCard(at: cardNumber)
             updateViewFromModel();
         } else {
@@ -46,9 +44,10 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var flipCountLabel: UILabel!
-
-    //Здесь у нас инициализированый словарь Инт ключ строка значение
+    
+    var emojiChoices = ["👻", "🤮", "🤗", "👀", "👅", "🍀"]
     var emoji =  [Int:String]();
+    
     func emoji(for card: Card) -> String {
         if emojiChoices.count > 0, emoji[card.identifier] == nil {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
