@@ -39,5 +39,6 @@ class Concentration
             let card = Card()
             cards += [card, card]
         }
+        cards = cards.shuffled();
     }
 }
