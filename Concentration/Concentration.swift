@@ -10,9 +10,17 @@ import Foundation
 
 class Concentration
 {
-    var cards [Card]
+    //Тут мы говорим о том, что в этом свойстве будет массив структур карточек
+    var cards = [Card]()
+    //Метод для выбора карточек
     func choseCard(at index: Int) {
         
     }
     
+    init(numberOfPairsOfCards: Int)  {
+        for identifier in  1...numberOfPairsOfCards {
+            let card = Card(identifier: identifier)
+            card += [card, card]
+        }
+    }
 }

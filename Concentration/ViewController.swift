@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var game = Concentration()
     
     @IBOutlet var cardButtons: [UIButton]!
     var emojiChoices = ["👻", "🤮", "🤗", "👻", "👀", "👅", "🍀", "🍀", "🤮", "🤗", "👀", "👅"]
