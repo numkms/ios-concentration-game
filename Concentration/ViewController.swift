@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
     
     @IBOutlet var cardButtons: [UIButton]!
-    var emojiChoices = ["👻", "🤮", "🤗", "👻", "👀", "👅", "🍀", "🍀", "🤮", "🤗", "👀", "👅"]
+    var emojiChoices = ["👻", "🤮", "🤗", "👀", "👅", "🍀"]
     var flipCount: Int = 0 {
         didSet{
             flipCountLabel.text = "Flips: \(flipCount)"
@@ -46,19 +46,14 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var flipCountLabel: UILabel!
-    func flipCard(withEmoji emoji: String, on button: UIButton) {
-        if button.currentTitle == emoji {
-            button.setTitle("", for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
-        
-        } else {
-            button.setTitle(emoji, for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
-        flipCount += 1
-    }
-    
+
+    //Здесь у нас инициализированый словарь Инт ключ строка значение
+    var emoji =  [Int:String]();
     func emoji(for card: Card) -> String {
-        return "?"
+        if emojiChoices.count > 0, emoji[card.identifier] == nil {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        return emoji[card.identifier] ?? "?"
     }
 }

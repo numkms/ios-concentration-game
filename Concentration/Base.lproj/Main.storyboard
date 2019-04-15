@@ -151,7 +151,7 @@
                         <outletCollection property="cardButtons" destination="YAR-lr-8ND" collectionClass="NSMutableArray" id="rEu-16-dc3"/>
                         <outletCollection property="cardButtons" destination="zo6-fz-UEZ" collectionClass="NSMutableArray" id="nO1-pC-0wO"/>
                         <outletCollection property="cardButtons" destination="GSo-tP-5LS" collectionClass="NSMutableArray" id="fJL-OH-O8J"/>
-                        <outletCollection property="cardButtons" destination="hng-Gf-HnK" collectionClass="NSMutableArray" id="hVt-Ng-ReY"/>
+                        <outletCollection property="cardButtons" destination="hng-Gf-HnK" collectionClass="NSMutableArray" id="Y5n-du-5Da"/>
                     </connections>
                 </viewController>
             </objects>
