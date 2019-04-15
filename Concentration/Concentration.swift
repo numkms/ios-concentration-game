@@ -14,13 +14,17 @@ class Concentration
     var cards = [Card]()
     //Метод для выбора карточек
     func choseCard(at index: Int) {
-        
+        if  cards[index].isFaceUp {
+            cards[index].isFaceUp = false
+        } else {
+            cards[index].isFaceUp = true
+        }
     }
     
     init(numberOfPairsOfCards: Int)  {
-        for identifier in  1...numberOfPairsOfCards {
-            let card = Card(identifier: identifier)
-            card += [card, card]
+        for _ in  1...numberOfPairsOfCards {
+            let card = Card()
+            cards += [card, card]
         }
     }
 }

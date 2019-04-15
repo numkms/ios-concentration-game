@@ -13,6 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -150,9 +151,9 @@
                         <outletCollection property="cardButtons" destination="YAR-lr-8ND" collectionClass="NSMutableArray" id="rEu-16-dc3"/>
                         <outletCollection property="cardButtons" destination="zo6-fz-UEZ" collectionClass="NSMutableArray" id="nO1-pC-0wO"/>
                         <outletCollection property="cardButtons" destination="GSo-tP-5LS" collectionClass="NSMutableArray" id="fJL-OH-O8J"/>
+                        <outletCollection property="cardButtons" destination="hng-Gf-HnK" collectionClass="NSMutableArray" id="hVt-Ng-ReY"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="491" y="201"/>
         </scene>
