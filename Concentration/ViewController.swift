@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
+    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     @IBOutlet var cardButtons: [UIButton]!
     var flipCount: Int = 0 {
@@ -18,6 +18,12 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     };
+    
+    var numberOfPairsOfCards: Int {
+        get {
+            return cardButtons.count / 2
+        }
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
