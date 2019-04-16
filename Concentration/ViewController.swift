@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var flipCountLabel: UILabel!
     
     private var emojiChoices = ["👻", "🤮", "🤗", "👀", "👅", "🍀"]
-    private var emoji =  [Int:String]();
+    private var emoji =  [Card:String]();
     
     private func emoji(for card: Card) -> String {
         if emojiChoices.count > 0, emoji[card.identifier] == nil {
