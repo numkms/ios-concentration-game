@@ -11,9 +11,9 @@ import Foundation
 class Concentration
 {
     //Тут мы говорим о том, что в этом свойстве будет массив структур карточек
-    var cards = [Card]()
+    private (set) var cards = [Card]()
     
-    var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -35,6 +35,7 @@ class Concentration
     }
     //Метод для выбора карточек
     func choseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.choseCard(at: \(index) chosen index not in these cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex].identifier == cards[index].identifier  {
@@ -50,6 +51,7 @@ class Concentration
     }
     
     init(numberOfPairsOfCards: Int)  {
+        assert(numberOfPairsOfCards > 0, "Concentration.init(numberOfPairOfCards: \(numberOfPairsOfCards) you must have at least in pair of cards")
         for _ in  1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
