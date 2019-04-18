@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBAction func startNewGame(_ sender: UIButton) {
         game.start()
         flipCount = 0
-        emojiChoices = "👻🤮🤗👀👅🍀"
         updateViewFromModel()
     }
     
@@ -70,16 +69,16 @@ class ViewController: UIViewController {
         }
     }
     
-    private var emojiChoices = "👻🤮🤗👀👅🍀"
     private var emoji =  [Card:String]();
     
     private func emoji(for card: Card) -> String {
-        let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
-        if emojiChoices.count > 0, emoji[card] == nil {
-            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
+        let randomStringIndex = game.emojiChoices.index(game.emojiChoices.startIndex, offsetBy: game.emojiChoices.count.arc4random)
+        if game.emojiChoices.count > 0, emoji[card] == nil {
+            emoji[card] = String(game.emojiChoices.remove(at: randomStringIndex))
         }
         return emoji[card] ?? "?"
     }
+    
 }
 
 extension Int {

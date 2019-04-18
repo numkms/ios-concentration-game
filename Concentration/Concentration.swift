@@ -12,7 +12,22 @@ struct Concentration
 {
     //Тут мы говорим о том, что в этом свойстве будет массив структур карточек
     private (set) var cards = [Card]()
+    
+    var emojiChoices = "???????"
+    private (set) var themes : [String:String] = [
+        "animals":"🐝🐒🐷🐔🐧🐤🦄",
+        "activity":"🏀🥎🥊🏓🥏🏹🥎",
+        "faces":"🥰🤪😇😎😛🥶",
+        "hands":"✌🏻☝🏻💪👎🏽👈🤙🏻",
+        "family":"👨‍👩‍👧‍👧💏👩‍👩‍👧👨‍👨‍👧‍👧👨‍👨‍👦👩‍👦",
+        "flags":"🇲🇬🇲🇸🏳️‍🌈🇺🇸🇯🇵🇵🇭"
+    ]
     private var numberOfPairsOfCards: Int
+    
+    func randomTheme() -> String {
+        return themes.randomElement()?.value ?? "??????";
+    }
+    
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             return cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly
@@ -48,6 +63,7 @@ struct Concentration
     
      mutating func start() {
         cards = []
+        emojiChoices = randomTheme()
         assert(numberOfPairsOfCards > 0, "Concentration.init(numberOfPairOfCards: \(numberOfPairsOfCards) you must have at least in pair of cards")
         for _ in  1...numberOfPairsOfCards {
             let card = Card()
