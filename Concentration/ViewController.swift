@@ -11,16 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
     @IBOutlet var cardButtons: [UIButton]!
-    private(set) var flipCount: Int = 0 {
-        didSet{
-            updateFlipcount()
-        }
-    };
     
     @IBAction func startNewGame(_ sender: UIButton) {
-        game.start()
-        flipCount = 0
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
         updateViewFromModel()
     }
     
@@ -29,9 +24,20 @@ class ViewController: UIViewController {
             .strokeWidth: 5.0,
             .strokeColor: #colorLiteral(red: 1, green: 0.6135899425, blue: 0.424477756, alpha: 1)
         ]
-        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        let attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
         flipCountLabel.attributedText = attributedString
     }
+    
+    private func updateScore() {
+        let attributes : [NSAttributedString.Key : Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 1, green: 0.6135899425, blue: 0.424477756, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Score: \(game.score)", attributes: attributes)
+        scoreLabel.attributedText = attributedString
+    }
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var numberOfPairsOfCards: Int {
         get {
@@ -41,7 +47,6 @@ class ViewController: UIViewController {
     
     @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
-            flipCount += 1
             game.choseCard(at: cardNumber)
             updateViewFromModel();
         } else {
@@ -61,13 +66,11 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
             }
         }
+        updateFlipcount()
+        updateScore()
     }
     
-    @IBOutlet private weak var flipCountLabel: UILabel! {
-        didSet {
-            updateFlipcount()
-        }
-    }
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
     private var emoji =  [Card:String]();
     

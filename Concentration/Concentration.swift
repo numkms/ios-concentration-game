@@ -10,10 +10,12 @@ import Foundation
 
 struct Concentration
 {
-    //Тут мы говорим о том, что в этом свойстве будет массив структур карточек
     private (set) var cards = [Card]()
-    
+    var score = 0
+    var flipCount = 0
+    var sawedEmojis: [Int] = []
     var emojiChoices = "???????"
+    
     private (set) var themes : [String:String] = [
         "animals":"🐝🐒🐷🐔🐧🐤🦄",
         "activity":"🏀🥎🥊🏓🥏🏹🥎",
@@ -22,7 +24,7 @@ struct Concentration
         "family":"👨‍👩‍👧‍👧💏👩‍👩‍👧👨‍👨‍👧‍👧👨‍👨‍👦👩‍👦",
         "flags":"🇲🇬🇲🇸🏳️‍🌈🇺🇸🇯🇵🇵🇭"
     ]
-    private var numberOfPairsOfCards: Int
+    private var numberOfPairsOfCards: Int = 0
     
     func randomTheme() -> String {
         return themes.randomElement()?.value ?? "??????";
@@ -38,7 +40,6 @@ struct Concentration
             }
         }
     }
-    
     //Метод для выбора карточек
     mutating func choseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.choseCard(at: \(index) chosen index not in these cards")
@@ -47,13 +48,20 @@ struct Concentration
                 if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched =  true
                     cards[index].isMatched = true
+                    score += 2
+                } else {
+                    if sawedEmojis.contains(index) {
+                        score -= 1
+                    }
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
-            } else {    
+                sawedEmojis.append(index)
+            } else {
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
+        flipCount += 1
     }
     
     init(numberOfPairsOfCards: Int)  {
@@ -64,6 +72,7 @@ struct Concentration
      mutating func start() {
         cards = []
         emojiChoices = randomTheme()
+        flipCount = 0
         assert(numberOfPairsOfCards > 0, "Concentration.init(numberOfPairOfCards: \(numberOfPairsOfCards) you must have at least in pair of cards")
         for _ in  1...numberOfPairsOfCards {
             let card = Card()
