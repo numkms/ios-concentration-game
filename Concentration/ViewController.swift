@@ -18,6 +18,13 @@ class ViewController: UIViewController {
         }
     };
     
+    @IBAction func startNewGame(_ sender: UIButton) {
+        game.start()
+        flipCount = 0
+        emojiChoices = "👻🤮🤗👀👅🍀"
+        updateViewFromModel()
+    }
+    
     private func updateFlipcount() {
         let attributes : [NSAttributedString.Key : Any] = [
             .strokeWidth: 5.0,

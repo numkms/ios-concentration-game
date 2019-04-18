@@ -12,7 +12,7 @@ struct Concentration
 {
     //Тут мы говорим о том, что в этом свойстве будет массив структур карточек
     private (set) var cards = [Card]()
-    
+    private var numberOfPairsOfCards: Int
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             return cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly
@@ -23,6 +23,7 @@ struct Concentration
             }
         }
     }
+    
     //Метод для выбора карточек
     mutating func choseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.choseCard(at: \(index) chosen index not in these cards")
@@ -41,6 +42,12 @@ struct Concentration
     }
     
     init(numberOfPairsOfCards: Int)  {
+        self.numberOfPairsOfCards = numberOfPairsOfCards
+        start()
+    }
+    
+     mutating func start() {
+        cards = []
         assert(numberOfPairsOfCards > 0, "Concentration.init(numberOfPairOfCards: \(numberOfPairsOfCards) you must have at least in pair of cards")
         for _ in  1...numberOfPairsOfCards {
             let card = Card()

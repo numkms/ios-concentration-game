@@ -151,10 +151,24 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IV6-Hv-GIU">
+                                <rect key="frame" x="78" y="716" width="259" height="63"/>
+                                <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <state key="normal" title="New game">
+                                    <color key="titleColor" red="1" green="0.6353915993" blue="0.4625365072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iDH-wZ-ZxC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IV6-Hv-GIU" secondAttribute="trailing" constant="77" id="GCN-qj-5Kr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IV6-Hv-GIU" secondAttribute="bottom" constant="83" id="Ix0-Ft-B3n"/>
                             <constraint firstItem="Rav-Bi-urH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WXV-oT-6HC"/>
+                            <constraint firstItem="IV6-Hv-GIU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="78" id="f3I-nM-mpg"/>
                             <constraint firstItem="Rav-Bi-urH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ohX-Dg-Zmi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEW-WA-4Ur" secondAttribute="trailing" constant="16" id="pzk-gN-fqQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1b7-xa-jmd" secondAttribute="bottom" id="yfe-fr-kaW"/>
@@ -181,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491" y="201"/>
+            <point key="canvasLocation" x="489.85507246376818" y="200.89285714285714"/>
         </scene>
     </scenes>
 </document>
